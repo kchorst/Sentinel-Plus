@@ -4,6 +4,8 @@
 
 This beta package contains **Sentinel+ only**. LLM Tester is intentionally not included in this build.
 
+Licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0). You are free to share and adapt these materials for any purpose, including commercial use, as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. License details: https://creativecommons.org/licenses/by/4.0/
+
 ## First install default
 
 - Mode: **Basic**
