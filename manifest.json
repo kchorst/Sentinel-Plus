@@ -1,0 +1,95 @@
+{
+  "manifest_version": 3,
+  "name": "Sentinel+",
+  "version": "2.2.4",
+  "description": "Screen before you send. Sentinel+ checks cloud AI messages for personal, credential, and confidential information before they leave your browser.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvEULpbG/EZ/ZQvnAVzWs2AUgiL2uJJ0S9DpHORRaDPIv3jZVCBQofX0h6yqr53tSUOSIoqSAqM5XLDbnx6rTYTb7cPbqFlcUmMAxWVuuIHNXXc7pGbg/qsTPEQZaJx68JxzOFRDuBr6izZviIlSCeVLu0HVCnUQqzhCrz1ibNWYOUJT+73InDujm9bL1AwIflFfWMnB+frR5/dk8rrhdnGea15VPiN4gOCMqIcNbno/2lp/5LosblfYJmRb90XsG81WYV+OJGt4tjm7tfdBUE7aO1IC6uvRp+1sLWEYOR1jtbZtEiyi5wn5wylT3IqUZEhH4XskooXT8aYTcKY+COwIDAQAB",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*",
+    "http://127.0.0.1:*/*",
+    "http://localhost/*",
+    "http://localhost:*/*",
+    "https://chat.deepseek.com/*",
+    "https://chat.mistral.ai/*",
+    "https://chat.openai.com/*",
+    "https://chat.qwen.ai/*",
+    "https://chatgpt.com/*",
+    "https://claude.ai/*",
+    "https://gemini.google.com/*",
+    "https://grok.com/*",
+    "https://kimi.moonshot.cn/*",
+    "https://meta.ai/*",
+    "https://perplexity.ai/*",
+    "https://poe.com/*",
+    "https://qianwen.aliyun.com/*",
+    "https://tongyi.aliyun.com/*",
+    "https://www.deepseek.com/*",
+    "https://www.meta.ai/*",
+    "https://www.perplexity.ai/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Sentinel+",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*",
+        "https://www.perplexity.ai/*",
+        "https://perplexity.ai/*",
+        "https://grok.com/*",
+        "https://chat.mistral.ai/*",
+        "https://chat.deepseek.com/*",
+        "https://www.deepseek.com/*",
+        "https://www.meta.ai/*",
+        "https://meta.ai/*",
+        "https://chat.qwen.ai/*",
+        "https://tongyi.aliyun.com/*",
+        "https://qianwen.aliyun.com/*",
+        "https://kimi.moonshot.cn/*",
+        "https://poe.com/*"
+      ],
+      "js": [
+        "config.js",
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "externally_connectable": {
+    "ids": [
+      "njggbbcnjobebgflkngifbpnanlgfekc"
+    ]
+  },
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "version_name": "2.2.4 beta candidate \u2014 Copilot not supported"
+}

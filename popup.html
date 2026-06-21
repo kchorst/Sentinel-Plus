@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sentinel+ 2.2.4 Beta</title>
+  <link rel="stylesheet" href="sentinel-global.css">
+</head>
+<body class="sentinel-popup-body">
+  <main class="sentinel-container">
+    <section class="sentinel-top">
+      <div class="brand">
+        <h1>Sentinel+</h1>
+        <p>Screen before you send.</p>
+      </div>
+      <span id="statusDot" class="dot" title="On"></span>
+    </section>
+
+    <div id="modeLine" class="site-line"></div>
+    <div id="siteLine" class="site-line hidden"></div>
+    <section id="refreshNotice" class="refresh-notice hidden">
+      <strong>Refresh this chat page to activate Sentinel+ protection.</strong>
+      <span>Use this if you installed or reloaded Sentinel+ while this AI chat was already open.</span>
+      <button id="refreshPage" class="small-btn wide">Refresh chat page</button>
+    </section>
+
+    <div class="toolbar">
+      <button id="gearBtn" class="icon-btn" title="Settings">⚙</button>
+      <button id="moreBtn" class="small-btn">More</button>
+    </div>
+
+    <section id="gearPanel" class="panel hidden">
+      <div class="panel-head"><strong>Settings</strong><button id="hideGear" class="tiny-btn">Hide</button></div>
+      <div class="field">
+        <label for="styleSelect">Protection Style</label>
+        <select id="styleSelect">
+          <option value="balanced">Balanced</option>
+          <option value="gentle">Gentle</option>
+          <option value="strict">Strict</option>
+        </select>
+      </div>
+      <div id="approvedBox" class="hidden">
+        <div class="note"><span id="approvedCount">0</span> approved item(s) remembered for this browser session.</div>
+        <button id="clearApproved" class="small-btn wide">Clear approved items</button>
+      </div>
+      <div id="trustedLocalBox" class="hidden"><div class="note">Trusted local LLMs appear here when detected.</div></div>
+
+      <div class="panel-subtle" id="protectedTermsBox">
+        <div class="panel-head small-head">
+          <div><strong>Protected Terms</strong><div id="protectedTermsCount" class="mini-count">0 saved</div></div>
+          <button id="manageProtectedTerms" class="tiny-btn">Manage</button>
+        </div>
+        <div class="note">Warn before sending client, case, project, company, or confidential business terms.</div>
+        <div id="protectedTermsEditorPanel" class="hidden">
+          <div class="panel-head small-head"><strong>Edit protected terms</strong><button id="hideProtectedTermsTop" class="tiny-btn">Hide</button></div>
+          <div class="note">Enter one protected term per line. Terms may include commas, such as “ChatGPT, Inc.”</div>
+          <textarea id="protectedTermsEditor" spellcheck="false" placeholder="Client ABC&#10;Smith divorce case&#10;Project Falcon&#10;ChatGPT, Inc."></textarea>
+          <div class="toolbar"><button id="saveProtectedTerms" class="small-btn">Save terms</button><button id="clearProtectedTerms" class="small-btn">Clear all</button><button id="hideProtectedTerms" class="small-btn">Hide</button></div>
+          <div id="protectedTermsMsg" class="msg"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="morePanel" class="panel hidden">
+      <div class="panel-head"><strong>More</strong><button id="hideMore" class="tiny-btn">Hide</button></div>
+      <div id="detectedItems"></div>
+      <div class="toolbar"><button id="checkIntegrations" class="small-btn">Refresh status</button></div>
+      <div id="integrationMsg" class="msg"></div>
+      <button id="enableProfileTools" class="small-btn pro wide">Enable Profile Tools</button>
+    </section>
+
+    <section id="profilePanel" class="panel hidden">
+      <div class="panel-head"><strong>Profile Tools</strong><button id="hideProfile" class="tiny-btn">Hide</button></div>
+      <div class="note">These tools are for advanced rule configuration.</div>
+      <div class="note">Use fake sample data only. Do not paste client, legal, financial, medical, company, or personal information into online regex tools.</div>
+      <div class="profile-actions">
+        <button id="importProfile" class="small-btn pro">Import</button>
+        <input id="profileFile" type="file" accept="application/json,.json" class="hidden">
+        <button id="exportProfile" class="small-btn pro">Export</button>
+        <button id="editProfile" class="small-btn pro">Edit JSON</button>
+        <button id="customSitesBtn" class="small-btn pro">Custom Sites</button>
+        <button id="devDiag" class="small-btn pro">Diagnostics</button>
+        <button id="regexHelp" class="small-btn pro wide">Regex Help</button>
+      </div>
+      <textarea id="profileEditor" class="hidden" spellcheck="false"></textarea>
+      <div class="toolbar hidden" id="editorActions"><button id="applyProfile" class="small-btn">Apply</button><button id="cancelEdit" class="small-btn">Hide editor</button></div>
+      <div id="profileMsg" class="msg"></div>
+    </section>
+
+    <section id="customSitesPanel" class="panel hidden">
+      <div class="panel-head"><strong>Custom AI Sites</strong><button id="hideCustomSites" class="tiny-btn">Hide</button></div>
+      <div id="customSitesBox" class="note">No custom sites loaded.</div>
+      <button id="testSelectors" class="small-btn wide">Test current page selectors</button>
+      <div id="customSiteMsg" class="msg"></div>
+    </section>
+
+    <section id="diagPanel" class="panel hidden">
+      <div class="panel-head"><strong>Developer Diagnostics</strong><button id="hideDiag" class="tiny-btn">Hide</button></div>
+      <div class="profile-actions">
+        <button id="exportAuditJson" class="small-btn pro">Audit JSON</button>
+        <button id="exportAuditCsv" class="small-btn pro">Audit CSV</button>
+        <button id="rawDebug" class="small-btn pro wide">Raw debug logging: Off</button>
+      </div>
+      <div id="diagBox" class="diag-box"></div>
+    </section>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
